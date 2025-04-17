@@ -25,17 +25,7 @@ jobs:
         with:
           python-version: '3.12.10'
 
-      - name: Instalar Poetry
-        run: curl -sSL https://install.python-poetry.org | python3 -
-
-      - name: Configurar Poetry
-        run: |
-          poetry config virtualenvs.in-project true
-          poetry install --with dev
-
-      - name: Ejecutar semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}  # opcional
-        run: |
-          poetry run release publish
+      - name: Release con python-semantic-release Action
+        uses: python-semantic-release/publish-action@v9.21.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

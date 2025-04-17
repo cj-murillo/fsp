@@ -1,6 +1,5 @@
 [project]
 name = "app"
-version = "0.1.0"
 description = "API con FastAPI, Poetry y semantic-release"
 authors = [
     {name = "Tu Nombre",email = "tu@correo.com"}
@@ -14,6 +13,14 @@ dependencies = [
 ]
 
 [tool.poetry]
+name = "app"
+readme = "README.md"
+packages = [
+  { include = "app" }
+]
+
+[virtualenvs]
+package-mode = false
 
 [tool.poetry.group.dev.dependencies]
 python-semantic-release = "^9.21.0"
@@ -24,6 +31,10 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.semantic_release]
 version_variable = "app/__init__.py:__version__"
+version_toml = [
+  "pyproject.toml:tool.poetry.version",
+  "pyproject.toml:project.version"
+]
 upload_to_pypi = false         # pon true si quieres publicar en PyPI
 branch = "main"
 commit_author = "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
