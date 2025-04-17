@@ -24,6 +24,17 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.12.10'
+      
+      - name: Install Poetry
+        run: curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Configurar e instalar deps
+        run: |
+          poetry config virtualenvs.in-project true
+          poetry install --with dev
+
+      - name: Build distributions
+        run: poetry build --format=wheel --format=sdist
 
       - name: Release con python-semantic-release Action
         uses: python-semantic-release/publish-action@v9.21.0
