@@ -1,5 +1,6 @@
 [project]
 name = "app"
+version = "0.0.0"
 description = "API con FastAPI, Poetry y semantic-release"
 authors = [
     {name = "Tu Nombre",email = "tu@correo.com"}
@@ -14,6 +15,7 @@ dependencies = [
 
 [tool.poetry]
 name = "app"
+version = "0.0.0"
 readme = "README.md"
 packages = [
   { include = "app" }
